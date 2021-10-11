@@ -1,0 +1,40 @@
+
+
+{{/*加载normalize.css*/}}
+<link type="text/css" rel="stylesheet" href="{{ .Site.BaseURL }}/css/normalize.css">
+
+{{/*加载sass样式*/}}
+{{ $options := (dict "transpiler" "dartsass" "outputStyle" "compressed" "enableSourceMap" true) }}
+{{ $style := resources.Get "scss/ming.scss" | resources.ToCSS $options }}
+<link type="text/css" rel="stylesheet" href="{{ $style.Permalink }}">
+
+{{/*设置代码高亮样式表*/}}
+<link type="text/css" rel="stylesheet" href="{{ .Site.BaseURL }}/css/syntax.css">
+
+{{/* 一些内置css样式 */}}
+{{/* 可以让hugo的模板引擎填充参数 */}}
+<style>    
+
+    {{/* 设置背景图片，没有则设置默认颜色 */}}
+    .mingBackground{
+    {{- with .Site.Params.MainBackgroundImage }}
+        background: url({{ . }});
+    {{- else }}
+        background: #aaa;
+    {{- end }}
+    }
+
+    {{/* 设置字体大小。适用于em和rem */}}
+    .mingBased{
+        font-size: 16px;
+    }
+
+</style>
+
+
+<!--链接字体-->
+<!-- Fira Code -->
+<!-- Pacifico -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Pacifico&display=swap" rel="stylesheet">

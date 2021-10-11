@@ -1,0 +1,56 @@
+{{/* home页面设置 */}}
+
+{{ define "main" }}
+<!-- index文件主要内容 -->
+
+<!--分页-->
+{{ range .Paginator.Pages }}
+
+<article class="mingIndexItem">
+
+    <!--描述-->
+    <div class="description">
+        <!-- 显示:日期|Tag1|Tag2...-->
+        <p><span> {{- .Date.Format "Monday, January 2, 2006" -}} </span> 
+            {{- range .Params.tags -}}
+            <span> | <a href="/tags/{{ . | urlize }}">{{- . -}}</a></span>
+            {{- end -}}
+        </p>
+    </div>
+
+    <!--标题-->
+    <div class="title">
+        <h1>{{ .Title }}</h1>
+    </div>
+
+    <!--摘抄-->
+    <div class="excerptContent">
+        {{ .Summary }}
+    </div>
+
+    <!--阅读更多-->
+    <div class="readMore">
+        <a href="{{ .Permalink }}">Read More <(￣︶￣)↗[GO!]</a>
+    </div>
+
+</article>
+{{ end }}
+
+<!--设置上一页/下一页按钮-->
+<div>
+    
+{{ if .Paginator.HasNext}}
+<a class="nextPageButton" href="{{ .Paginator.Next.URL }}">
+    Older
+</a>
+{{ end }}
+
+{{ if .Paginator.HasPrev }}
+<a class="lastPageButton" href="{{ .Paginator.Prev.URL }}">
+    Newer
+</a>
+{{ end }}
+
+</div>
+
+{{ end }}

@@ -1,0 +1,48 @@
+// ming的内容页面的样式
+
+@use '../base/base.scss';
+@use './postContent.scss';
+
+// ming的文章样式
+.mingPostStyle {
+    @include base.mingInit();
+
+    padding: 30px 40px;
+
+    // 文章页头
+    .postHeader {
+        @include base.mingInit();
+        color: base.$PostHeaderTextColor;
+
+        // 设置日期链接格式
+        a {
+            @include base.colorTransition();
+            text-decoration: none;
+
+            &:hover {
+                color: base.$PostHeaderTextHoverColor;
+            }
+        }
+    }
+
+    // 文章标题
+    .postTitle {
+        @include base.mingInit();
+    }
+
+    // 文章页脚
+    .postFooter {
+        @include base.mingInit();
+    }
+
+    // 文章内容
+    .postContent {
+        @include postContent.content();
+
+        // 设置分割线
+        border-bottom: dotted;
+        border-top: dotted;
+        border-bottom-width: 1px;
+        border-top-width: 1px;
+    }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--全局html基础结构-->
+<html lang="zh-CN" class="mingBackground mingBased">
+
+<!---------------------->
+
+<head>
+    <!--指定编码-->
+    <meta charset="utf-8">
+
+    <!--设置viewport信息-->
+    <!--视图宽度=设备视图宽度-->
+    <!--默认缩放=不缩放(1)-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--指定作者-->
+    <meta name="author" content="MingMoe & Thanks Octopress">
+
+    <!--设置Title-->
+    <title>
+    {{- block "title" . -}}
+    {{ .Site.Title }}
+    {{- end -}} - {{ .Site.Title }}
+    </title>
+
+    <!--html的头部片段-->
+    {{ partial "head.html" . }}
+
+</head>
+
+<!---------------------->
+
+<body class="mingBody">
+
+    <!--顶板-->
+    {{ partial "common/facade.html" . }}
+
+    <!--导航栏-->
+    {{ partial "common/nav.html" . }}
+
+    <!--设置框架-->
+    <!--包含主要内容和侧边栏-->
+    <div class="mingContentWrapper">
+        <!--加载主要内容-->
+        <main class="mingContent">
+            {{ block "main" . }}
+            <p>No content!</p>
+            {{ end }}
+        </main>
+        
+        <!--加载侧边栏-->
+        {{ partial "common/sider.html" . }}
+    </div>
+
+    <!--加载页脚-->
+    {{ partial "common/footer.html" . }}
+
+</body>
+<!---------------------->
+
+</html>

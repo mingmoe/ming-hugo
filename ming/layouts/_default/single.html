@@ -1,0 +1,39 @@
+{{/* 用于设置标题 */}}
+{{ define "title" }}
+{{ .Page.Title }}
+{{ end }}
+
+
+{{ define "main" }}
+<!-- 单个文件主要内容 -->
+
+<div class="mingPostStyle">
+    <!--生成文章页首-->
+    <div class="postHeader">
+        <!-- 显示:日期|Tag1|Tag2...-->
+        <p></span> {{ .Date.Format "Monday, January 2, 2006" }} </span>
+            {{- range .Params.tags -}}
+            <span> | <a href="/tags/{{ . | urlize }}">{{ . }}</a></span>
+            {{- end -}}
+        </p>
+    </div>
+
+    <!--生成文章标题-->
+    <div class="postTitle">
+        <h1>{{ .Page.Title }}</h1>
+    </div>
+
+    <!--文章内容-->
+    <div class="postContent">
+        {{ .Page.Content }}
+    </div>
+
+    <!--文章页脚-->
+    <div class="postFooter">
+        <p>Posted by {{ .Site.Params.Author }}.</p>
+        <p>Last update {{ .Page.Lastmod.Format "Monday, January 2, 2006" }}.</p>
+    </div>
+
+</div>
+
+{{ end }}
